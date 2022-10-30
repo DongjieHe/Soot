@@ -40,6 +40,7 @@ import soot.util.Switch;
 
 public class JimpleLocal implements Local, ConvertToBaf {
   protected String name;
+  protected String signature;
   Type type;
 
   /** Constructs a JimpleLocal of the given name and type. */
@@ -101,6 +102,16 @@ public class JimpleLocal implements Local, ConvertToBaf {
   @Override
   public void setType(Type t) {
     this.type = t;
+  }
+
+  @Override
+  public String getSignature() {
+    return this.signature;
+  }
+
+  @Override
+  public void setSignature(String sig) {
+    this.signature = sig;
   }
 
   @Override

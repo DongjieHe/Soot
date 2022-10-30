@@ -385,11 +385,13 @@ final class AsmMethodSource implements MethodSource {
     Local l = locals.get(i);
     if (l == null) {
       String name;
+      String signature = null;
       if (localVars != null) {
         name = null;
         for (LocalVariableNode lvn : localVars) {
           if (lvn.index == idx) {
             name = lvn.name;
+            signature = lvn.signature;
             break;
           }
         }
@@ -401,6 +403,9 @@ final class AsmMethodSource implements MethodSource {
         name = "l" + idx;
       }
       l = Jimple.v().newLocal(name, UnknownType.v());
+      if (signature != null) {
+        l.setSignature(signature);
+      }
       locals.put(i, l);
     }
     return l;

@@ -91,6 +91,16 @@ public class BafLocal implements Local {
   }
 
   @Override
+  public String getSignature() {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public void setSignature(String sig) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
   public String toString() {
     return getName();
   }

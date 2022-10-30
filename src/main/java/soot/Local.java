@@ -37,4 +37,8 @@ public interface Local extends Value, Numberable, Immediate {
 
   /** Sets the type of the current variable. */
   public void setType(Type t);
+
+  /** Gets or Sets the signature of the current variable. */
+  public String getSignature();
+  public void setSignature(String sig);
 }

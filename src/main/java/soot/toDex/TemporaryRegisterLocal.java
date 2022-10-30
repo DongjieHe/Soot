@@ -102,4 +102,14 @@ public class TemporaryRegisterLocal implements Local {
     this.type = t;
   }
 
+  @Override
+  public String getSignature() {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public void setSignature(String sig) {
+    throw new UnsupportedOperationException();
+  }
+
 }
