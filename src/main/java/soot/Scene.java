@@ -1647,6 +1647,7 @@ public class Scene {
     addBasicClass("java.lang.ref.Finalizer");
 
     addBasicClass("java.lang.invoke.LambdaMetafactory");
+    addBasicClass("java.io.UnixFileSystem");
   }
 
   public void addBasicClass(String name) {
@@ -1724,6 +1725,28 @@ public class Scene {
           } else if (kind.equals("Method.invoke") || kind.equals("Constructor.newInstance")) {
             classNames.add(signatureToClass(target));
           } else if (kind.equals("Field.set*") || kind.equals("Field.get*")) {
+            classNames.add(signatureToClass(target));
+          } else if (kind.equals("Field.toString") || kind.equals("Method.toString") || kind.equals("Constructor.toString")) {
+            classNames.add(signatureToClass(target));
+          } else if (kind.equals("Field.getName") || kind.equals("Field.getDeclaringClass")) {
+            classNames.add(signatureToClass(target));
+          } else if (kind.equals("Class.getDeclaredField") || kind.equals("Class.getDeclaredMethod")) {
+            classNames.add(signatureToClass(target));
+          } else if (kind.equals("Class.getDeclaredFields") || kind.equals("Class.getDeclaredMethods")) {
+            if (!target.startsWith("[")) {
+              classNames.add(target);
+            }
+          } else if (kind.equals("Class.getFields") || kind.equals("Class.getMethods")) {
+            classNames.add(target);
+          } else if (kind.equals("Class.getMethod") || kind.equals("Class.getField")) {
+            classNames.add(signatureToClass(target));
+          } else if (kind.equals("Constructor.getModifiers") || kind.equals("Field.getModifiers")) {
+            classNames.add(signatureToClass(target));
+          } else if (kind.equals("Array.newInstance")) {
+            // do nothing
+          } else if (kind.equals("Method.getModifiers") || kind.equals("Method.getName") || kind.equals("Method.toGenericString")) {
+            classNames.add(signatureToClass(target));
+          } else if (kind.equals("Method.getDeclaringClass")) {
             classNames.add(signatureToClass(target));
           } else {
             throw new RuntimeException("Unknown entry kind: " + kind);
