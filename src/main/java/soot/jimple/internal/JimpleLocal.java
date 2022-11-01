@@ -77,6 +77,7 @@ public class JimpleLocal implements Local, ConvertToBaf {
     // do not intern the name again
     JimpleLocal local = new JimpleLocal(null, type);
     local.name = name;
+    local.signature = signature;
     return local;
   }
 
