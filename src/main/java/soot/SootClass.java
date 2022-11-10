@@ -952,6 +952,20 @@ public class SootClass extends AbstractHost implements Numberable {
     return hasOuterClass();
   }
 
+  public boolean isAnonymousClass() {
+    if (isInnerClass()) {
+      int idx = shortName.lastIndexOf('$');
+      String substr = shortName.substring(idx + 1);
+      for (int i = 0; i < substr.length(); ++i) {
+        if (! Character.isDigit(substr.charAt(i))) {
+          return false;
+        }
+      }
+      return true;
+    }
+    return false;
+  }
+
   /**
    * Returns the name of this class.
    */
